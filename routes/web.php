@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+route::prefix('admin')->group(function() {
+	route::get('/','Admin\ProductController@index')->name('admin.index');
+	
+	route::prefix('/product')->group(function() {
+		route::get('/add','Admin\ProductController@getAddProduct')->name('admin.product.getadd');
+	});
+
+	route::prefix('/type')->group(function() {
+		route::get('/','Admin\TypeProductController@index');
+		route::post('/postAdd','Admin\TypeProductController@postAdd')->name('type.postAdd');
+		route::post('/delete','Admin\TypeProductController@delete')->name('type.delete');
+	});
+});
