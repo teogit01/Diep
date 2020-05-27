@@ -1,28 +1,30 @@
-<!doctype html>
-<html class="no-js" lang="">
-    
-    @include('layouts/head')
 
-<body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-          <!-- Start Header Top Area -->
-    
-    @include('layouts/header-bar')
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- End Header Top Area -->
-    <!-- Mobile Menu start -->
-    @include('layouts/mobile-menu-start')
-    <!-- Mobile Menu end -->
-    <!-- Main Menu area start-->
-    @include('layouts/top-menu')
-    <!-- Main Menu area End-->
-    @yield('content')
-    <!-- Start Footer area-->
-    @include('layouts/footer')
-    <!-- End Footer area-->
-    @include('layouts/script')
+@include('layouts/head')
+
+<body class="">
+  <div class="wrapper ">
+    @include('layouts/left-menu')  
+
+    <div class="main-panel" style="background-color: #eee">
+      <!-- Navbar -->
+      
+        @include('layouts/header')    
+        <br><br><br>
+      
+      
+      <!-- End Navbar -->
+      <div class="conten">
+        @yield('content')
+      </div>
+
+      @include('layouts/footer')
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+ @include('layouts/js')
 </body>
 
 </html>

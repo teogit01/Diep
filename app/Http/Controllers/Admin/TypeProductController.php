@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\loaisanpham;
+use App\Models\type;
 
 class TypeProductController extends Controller
 {
@@ -14,29 +14,31 @@ class TypeProductController extends Controller
         parent::__construct();
     }
 
-    public function index(Request $req) {
-    	$data = loaisanpham::all();
+    public function index(Request $request) {
+    	$data = type::all();
     	
     	return view('admin.typeProduct.index',['data'=>$data]);
     }
 
-    public function postAdd(Request $req) {
+    public function postAdd(Request $request) {
 
+        $insert = $request;
+        $insert['code'] = strtoupper($insert['code']);
     	$config = [
-    		'model' => new loaisanpham(),
-    		'request'=> $req,
+    		'model' => new type(),
+    		'request'=> $request,
     	];
     	$this->config($config);
-    	$data = $this->model->web_insert($this->request);
+    	$data = $this->model->web_insert($insert);
     	return back()->with('success', 'Thêm thành công');
     }
     public function delete(Request $request) {
     	$id = $request->id;
-    	$record = loaisanpham::findOrFail($id);
+    	$record = type::findOrFail($id);
         $record->delete();
         // dd($data);
         //return back()->with('success', 'Xóa thành công!');
-        $data = loaisanpham::all();
+        $data = type::all();
     	return view('admin.typeProduct.dataUpdateContent',['data'=>$data,'mess'=>'Xoa Thanh Cong!']);
     }
 }

@@ -42,11 +42,11 @@ class Controller extends BaseController
     public function addImg($imgs){
         //if (isset($imags) and count($imgs)>0){
         if (($imgs) != null){
-            $path = public_path('img/carDetail');
+            $path = public_path('img/products');
             foreach($imgs as $index => $img ) {
                 $name = Str::random(5).'_'.$img->getClientOriginalName();
                 $img->move($path,$name);
-                $this->nameImgs[] = $img->getClientOriginalName();
+                $this->nameImgs[] = $name;
             }
         }  
         return;

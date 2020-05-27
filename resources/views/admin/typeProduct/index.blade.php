@@ -18,6 +18,9 @@
 		--flex-direction:column;	
 		--justify-content: center;
 		line-height: 40px;
+		--height: 350px;
+		max-height: 350px;
+  		overflow: scroll;
 	}
 	.left table {
 		width: 100%;
@@ -70,6 +73,7 @@
 		color: #ddd;
 	}
 	#showMessageDel { display: none; }
+	.footer { position: fixed; width: 100%; bottom: 15px; }
 </style>
 	@if($message = Session::get('success'))
         <div class="alert alert-success" style="text-align: center;position: fixed;width: 40%;background-color:#4C9F70;opacity: 0.7;color: black;right: 0;top:30%;" id='showMessage' role="alert">
@@ -82,9 +86,9 @@
             <p class="mb-0"></p>
     	</div>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	
 	<div class="main">
-		<h2>Quan Li Loai san Pham</h2>
+		<h3 style="color: blue">Quản lí loại sản phẩm</h3>
+		<hr style="opacity: 0.5;">
 		<div class="main-content">
 			<div class="left">
 				<table>
@@ -101,8 +105,8 @@
 							@foreach($data as $index => $item)
 								<tr>
 									<td class='stt'>{{$index+1}}</td>
-									<td class="ma">{{$item->id}}</td>
-									<td class="ten">{{$item->ten}}</td>
+									<td class="ma">{{$item->code}}</td>
+									<td class="ten">{{$item->name}}</td>
 									<td><div class="action">
 										<a href="#" onclick='del({{$item->id}})'>Xoa</a>
 										<a href="#">sua</a>
@@ -118,16 +122,18 @@
 			<div class="right">
 				<form method="post" action="{{route('type.postAdd')}}">
 					@csrf
-					<input type="text" name="ma" class="form-contro" autocomplete="off" placeholder="Nhập mã loại...">
+					<input type="text" name="code" class="form-contro" autocomplete="off" placeholder="Nhập mã loại...">
 
-					<input type="text" name="ten" class="form-contro" autocomplete="off" placeholder="Nhập tên loại...">
+					<input type="text" name="name" class="form-contro" autocomplete="off" placeholder="Nhập tên loại...">
 					<br>
 					<button class="btn btn-primary" style="margin: 5px 20px;width: 90%">Them</button>
 				</form>
 			</div>
 		</div>
+	</div>	
+	<div class="footer">
+	    @include('layouts/footer')
 	</div>
-
 	<script type="text/javascript">
         $(document).ready(function(){
             setTimeout(function(){ 
