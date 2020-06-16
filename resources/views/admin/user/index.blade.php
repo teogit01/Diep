@@ -77,4 +77,9 @@
 						{{ $users->links() }}
 				</div>
 		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+        	$('#user').attr('class','active')
+        })
+		</script>
 @endsection

@@ -1,4 +1,4 @@
-  <section class="ftco-section ftco-no-pt ftco-no-pb">
+    <section class="ftco-section ftco-no-pt ftco-no-pb">
 			<div class="container">
 				<div class="row no-gutters ftco-services">
           <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">

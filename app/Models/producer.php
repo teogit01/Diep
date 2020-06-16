@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\BaseModel;
 use Illuminate\Http\Request;
 
-class producer extends Model
+class producer extends BaseModel
 {
     protected $table = 'producers';
 
@@ -35,5 +35,9 @@ class producer extends Model
             'id' => 1
         ];
         return parent::base_update($this->request);
+    }
+
+    public function product(){
+        return $this->hasMany('product','producer_code','code');
     }
 }

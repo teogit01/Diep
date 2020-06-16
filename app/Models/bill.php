@@ -23,9 +23,9 @@ class bill extends BaseModel
         'phone',
         'address',
         'note',
-        'product',
+        'status',
 
-        'discount_code',
+        'discount',
 
         'total',
 

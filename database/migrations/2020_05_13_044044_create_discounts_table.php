@@ -20,7 +20,7 @@ class CreateDiscountsTable extends Migration
             $table->string('code')->nullable();
             $table->string('name')->nullable();
 
-            $table->double('percent')->nullable();
+            $table->integer('percent')->nullable();
             
             $table->timestamp('created_at')
                     ->default(DB::raw('CURRENT_TIMESTAMP'))

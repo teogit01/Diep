@@ -4,10 +4,10 @@
   <body class="goto-here">
   	@include('page/layouts/header')
     <!-- END nav -->
-
+  
     @yield('banner')
     <!-- show info (3 infomatin) -->
-    @yield('info')
+    <!-- @yield('info') -->
     <!-- custom -->
     @yield('show')
     
@@ -15,7 +15,7 @@
 
     <!-- show more -->
     @yield('more')
-    
+    @include('page/layouts/follow-instagram')
    	@include('page/layouts/footer')
   
 

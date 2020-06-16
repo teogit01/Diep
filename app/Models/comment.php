@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\BaseModel;
 use Illuminate\Http\Request;
 
-class comment extends Model
+class comment extends BaseModel
 {
     protected $table = 'comments';
 
@@ -38,5 +38,8 @@ class comment extends Model
             'id' => 1
         ];
         return parent::base_update($this->request);
+    }
+    public function user(){
+        return $this->hasOne('App\Models\user','code','user_code');
     }
 }

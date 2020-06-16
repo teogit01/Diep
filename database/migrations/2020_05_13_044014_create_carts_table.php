@@ -21,6 +21,8 @@ class CreateCartsTable extends Migration
             $table->string('user_code')->nullable();
             
             $table->integer('amount')->nullable();
+            $table->string('size')->nullable();
+            $table->string('color')->nullable();
 
             $table->timestamp('created_at')
                     ->default(DB::raw('CURRENT_TIMESTAMP'))

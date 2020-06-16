@@ -19,54 +19,66 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="active ">
+      <!-- <li class="act">
         <a href="./dashboard.html">
           <i class="nc-icon nc-bank"></i>
           <p>Dashboard</p>
         </a>
-      </li>
-      <li>
-        <a href="./icons.html">
+      </li> -->
+      <li class="" id ='product'>
+        <a href="{{route('admin.product.index')}}">
           <i class="nc-icon nc-diamond"></i>
-          <p>Icons</p>
+          <p>Sản Phẩm</p>
         </a>
       </li>
-      <li>
-        <a href="./map.html">
-          <i class="nc-icon nc-pin-3"></i>
-          <p>Maps</p>
+      <li class="" id='type'>
+        <a href="{{route('type.index')}}">
+          <i class="nc-icon nc-pin-3" ></i>
+          <p>Loại</p>
         </a>
       </li>
-      <li>
-        <a href="./notifications.html">
+      <li class="" id='producer'>
+        <a href="{{route('producer.index')}}">
           <i class="nc-icon nc-bell-55"></i>
-          <p>Notifications</p>
+          <p>Nhà Sản Xuất</p>
         </a>
       </li>
-      <li>
-        <a href="./user.html">
+      <li class="" id='distributor'>
+        <a href="{{route('distributor.index')}}">
           <i class="nc-icon nc-single-02"></i>
-          <p>User Profile</p>
+          <p>Nhà Phân Phối</p>
         </a>
       </li>
-      <li>
-        <a href="./tables.html">
+      <li class="" id='discount'>
+        <a href="{{route('discount.index')}}">
           <i class="nc-icon nc-tile-56"></i>
-          <p>Table List</p>
+          <p>Khuyến Mãi</p>
         </a>
       </li>
-      <li>
-        <a href="./typography.html">
+      <li class="" id='user'>
+        <a href="{{route('user.index')}}">
           <i class="nc-icon nc-caps-small"></i>
-          <p>Typography</p>
+          <p>Khách Hàng</p>
         </a>
       </li>
-      <li class="active-pro">
-        <a href="./upgrade.html">
+      <li class="" id='bill'>
+        <a href="{{route('bill')}}">
           <i class="nc-icon nc-spaceship"></i>
-          <p>Upgrade to PRO</p>
+          <p>Hóa Đơn</p>
+        </a>
+      </li>
+      <li class="" id='statistic'>
+        <a href="{{route('statistic')}}">
+          <i class="nc-icon nc-spaceship"></i>
+          <p>Thống Kê</p>
         </a>
       </li>
     </ul>
   </div>
 </div>
+<script type="text/javascript">
+  $('.act').on('click',function(){
+    //$(this).append('<div>ok</div>')
+    //$(this).css('color','greens')
+  })
+</script>

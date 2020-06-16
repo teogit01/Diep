@@ -19,11 +19,16 @@ class product extends BaseModel
         'name',
         'color',
         'price',
+        'size',
+        'nam',
+        'nu',
         'amount', 
         'image',
         'description',
+        'rate',
 
         'producer_code',
+        'distributor_code',
         'type_code',
         
         'created_at',
@@ -48,6 +53,9 @@ class product extends BaseModel
 
     public function type(){
         return $this->belongsTo('App\Models\type','type_code','code');
+    }
+    public function producer(){
+        return $this->belongsTo('App\Models\producer','producer_code','code');
     }
     // public function cart(){
     //     return $this->belongsTo('App\Models\type','type_code','code');

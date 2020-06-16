@@ -4,21 +4,22 @@
 <!-- Latest compiled and minified CSS -->
 
 <style type="text/css">
-	*{ font-family: sans-serif; font-size: 14px;}
-	.main { width: 98%; display: flex;flex-direction:column; padding: 20px 50px; margin: 0 1%; }
-	.left { width: 70%; background-color: #fff; box-shadow: 1px 1px 10px #ddd; padding: 15px 20px; }
+	*{ font-family: sans-serif; --font-size: 12px;}
+	.main { width: 98%; display: flex;flex-direction:column; padding: 20px 50px; --margin: 0 1%; }
+	.left { width: 80%; background-color: #fff; box-shadow: 1px 1px 10px #ddd; padding: 15px 20px; }
 	.form {
         box-shadow: 1px 1px 10px #ddd;
         padding: 5px 20px;
         border-radius: 10px; 
     } 
+
     label {
         opacity: 0.8;
         --font-style: italic;
     }
     .form-control{
-        border: none;
-        border-bottom: 1px solid #bbb;
+        --border: none;
+        --border-bottom: 1px solid #bbb;
         padding-left: 50px
     }
     .form-control::placeholder{
@@ -26,8 +27,8 @@
         font-size: 13px;
     }
    	textarea { border: none;}
-   	.select { height: 40px; }
-   	.select:focus {  bottom: 1px solid #ddd }
+   	.select { height: 40px; --border-bottom: 1px solid #aaa }
+   	.select:focus {  --bottom: 1px solid #ddd }
     img:hover { transform: scale(0.9); transition: 0.3s; }
 	#showMessageDel { display: none; }
 	button { width: 30%; }
@@ -36,7 +37,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<div class="main">
 		<div class="row">
-			<h3 style="color: blue; width: 100%; border-bottom: 1px solid #aaa">Thêm sản phẩm </h3>
+			<h3 style="color: black; width: 100%; border-bottom: 1px solid #aaa">Thêm sản phẩm </h3>
 			@if($message = Session::get('success'))
 		        <div class="alert alert-success" style="text-align: center;position: fixed;width: 40%;background-color:#4C9F70;opacity: 0.7;color: black;right: 0;top:9%;z-index: 1;" id='showMessage' role="alert">
 		            {{$message}}
@@ -49,7 +50,7 @@
 				<form action="{{route('admin.product.postadd')}}" method="POST" enctype="multipart/form-data">
 					@csrf
 					<div class="form-group">
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-sm-2">
 								<label for="" class="control-label">Mã</label>	
 							</div>
@@ -57,7 +58,7 @@
 								<input type="text" class="form-control" id="code" name="code" placeholder="" autocomplete="off">						
 							</div>
 						</div>
-						<br>
+						<br> -->
 						<div class="row">
 							<div class="col-sm-2">
 								<label for="" class="control-label">Tên</label>	
@@ -83,6 +84,44 @@
 							</div>
 						</div>
 						<br>
+						
+						<div class="row">
+							<div class="col-sm-2">
+								<label for="" class="control-label">Nhà sản xuất</label>	
+							</div>
+							<div class="col-sm-10">
+								<!-- <input type="text" class="form-control" id="color" name="color" placeholder="" autocomplete="off">						 -->
+								<select class="form-control" data-actions="true" name="producer_code" data-style='btn-primar'>
+									@if (isset($producers))
+										@foreach ($producers as $producer)
+											<option value="{{$producer->code}}">{{$producer->name}}</option>
+										@endforeach	
+									@endif
+								</select>
+								<!-- <hr style="margin-top: 0px;background-color: #bbb"> -->
+								<br>
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-sm-2">
+								<label for="" class="control-label">Nhà phân phối</label>	
+							</div>
+							<div class="col-sm-10">
+								<!-- <input type="text" class="form-control" id="color" name="color" placeholder="" autocomplete="off">						 -->
+								<select class="form-control" data-actions="true" name="distributor_code" data-style='btn-primar'>
+									@if (isset($distributors))
+										@foreach ($distributors as $distributor)
+											<option value="{{$distributor->code}}">{{$distributor->name}}</option>
+										@endforeach	
+									@endif
+								</select>
+								<!-- <hr style="margin-top: 0px;background-color: #bbb"> -->
+								<br>
+							</div>
+						</div>
+						
 						<div class="row">
 							<div class="col-sm-2">
 								<label for="" class="control-label">Giá</label>	
@@ -105,9 +144,10 @@
 									<option>Red</option>
 									<option>Pink</option>
 								</select>
+								<hr style="margin-top: 0px;background-color: #bbb">
 							</div>
 						</div>
-						<br>
+						
 						<div class="row">
 							<div class="col-sm-2">
 								<label for="" class="control-label">Số lượng</label>	
@@ -123,7 +163,7 @@
 							</div>
 							<div class="col-sm-10">
 								<!-- <input type="text" class="form-control" id="color" name="color" placeholder="" autocomplete="off">						 -->
-								<select class="form-control select selectpicker" data-actions="true" name="sizes[]" multiple data-style='btn-primar'>
+								<select class="form-control select selectpicker" data-actions="true" name="size[]" multiple data-style='btn-primar'>
 									<option>36</option>
 									<option>37</option>
 									<option>38</option>
@@ -132,21 +172,21 @@
 									<option>41</option>
 									<option>42</option>
 								</select>
+								<hr style="margin-top: 0px;background-color: #bbb">
 							</div>
 						</div>
-						<br>
+						
 						<div class="row">
 							<div class="col-sm-2">
 								<label for="" class="control-label">Nam/Nữ</label>	
 							</div>
 							<div class="col-sm-10 row">
-								<div class="col-sm-1">
-									<input type="checkbox" class="form-control" id="gender[]" name="color" placeholder="" autocomplete="off">
+								<div class="col-sm-1" style="margin-left: 20px;">
+									<input type="checkbox" class="form-control" name="nam" placeholder="" autocomplete="off" value="1">
 								</div>
 								<div class="col-sm-1">
-									<input type="checkbox" class="form-control" id="gender[]" name="color" placeholder="" autocomplete="off">						
+									<input type="checkbox" class="form-control"  name="nu" placeholder="" autocomplete="off" value="1">						
 								</div>
-								
 							</div>
 						</div>
 						<br>
@@ -195,6 +235,9 @@
   		})
 	</script>
 	<script type="text/javascript">
+		$(document).ready(function(){
+        	$('#product').attr('class','active')
+        })
 	</script>
 	<!-- Latest compiled and minified JavaScript -->
 @endsection

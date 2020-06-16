@@ -26,9 +26,10 @@ class CreateBillsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('note')->nullable();
+            $table->integer('status')->nullable();
 
-            $table->string('discount_code')->nullable();
-            $table->double('total')->nullable();
+            $table->string('discount')->nullable();
+            $table->integer('total')->nullable();
             
             $table->timestamp('created_at')
                     ->default(DB::raw('CURRENT_TIMESTAMP'))

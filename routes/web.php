@@ -39,28 +39,76 @@ route::prefix('admin')->group(function() {
 	});
 	// Type
 	route::prefix('/type')->group(function() {
-		route::get('/','Admin\TypeProductController@index');
+		route::get('/','Admin\TypeProductController@index')->name('type.index');
 		route::post('/postAdd','Admin\TypeProductController@postAdd')->name('type.postAdd');
 		route::post('/delete','Admin\TypeProductController@delete')->name('type.delete');
 	});
 
+	// Distributor
+	route::prefix('/distributor')->group(function() {
+		route::get('/','Admin\DistributorController@index')->name('distributor.index');
+		route::post('/postAdd','Admin\DistributorController@postAdd')->name('distributor.postAdd');
+		route::post('/delete','Admin\DistributorController@delete')->name('distributor.delete');
+	});
+
+	// Producer
+	route::prefix('/producer')->group(function() {
+		route::get('/','Admin\ProducerController@index')->name('producer.index');
+		route::post('/postAdd','Admin\ProducerController@postAdd')->name('producer.postAdd');
+		route::post('/delete','Admin\ProducerController@delete')->name('producer.delete');
+	});
+
 	// User
 	route::prefix('/user')->group(function() {
-		route::get('/','Admin\UserController@index');
-		route::get('/detail/{id}','Admin\UserController@detail')->name('admin.user.detail');
+		route::get('/','Admin\UserController@index')->name('user.index');
+		route::get('/detail/{id}','Admin\UserController@detail')->name('user.detail');
 	});
 
 	// Bill
 	route::prefix('/bill')->group(function() {
-		route::get('/','Admin\BillController@index');
+		route::get('/','Admin\BillController@index')->name('bill');
 		route::get('/detail/{id}','Admin\BillController@detail');
+
+		//duyet
+		route::post('/confirm','Admin\BillController@confirm');
+		route::post('/cancel','Admin\BillController@cancel');
+		route::get('/delete/{id}','Admin\BillController@delete');
+
+	});
+
+	//Discount
+	route::prefix('/discount')->group(function() {
+		route::get('/','Admin\DiscountController@index')->name('discount.index');
+		route::post('/postAdd','Admin\DiscountController@postAdd')->name('discount.postAdd');
+		route::post('/delete','Admin\DiscountController@delete')->name('discount.delete');
+	});
+	//statistic (thong ke)
+	route::prefix('/statistic')->group(function(){
+		route::get('/','Admin\StatisticController@index')->name('statistic');
+		route::post('/month','Admin\StatisticController@month')->name('statistic.month');
+		route::post('/quy','Admin\StatisticController@quy')->name('statistic.quy');
 	});
 });
 
 // Page
 route::get('/','User\PageController@index')->name('home');
 route::get('/product/all','User\PageController@productAll')->name('product.all');
+route::get('/product/nam','User\PageController@productnam')->name('product.nam');
+route::get('/product/nu','User\PageController@productnu')->name('product.nu');
 
+//comment
+route::post('/product/comment','User\PageController@comment')->name('product.comment');
+route::post('/product/comment/delete','User\PageController@delComment')->name('product.comment.delete');
+
+route::get('/product/detail/{id}','User\PageController@detail')->name('product.detail');
+
+route::get('/profile/{id}','User\PageController@profile')->name('profile');
+route::post('/profile/{id}/edit','User\PageController@edit')->name('profile.edit');
+
+
+/////////////// Rate ////////////////
+route::post('/rate','User\RateController@rate')->name('rate');
+//////////// End Rate //////////////
 // end Page
 
 //	Ajax Add To Cart
@@ -77,8 +125,17 @@ route::prefix('/cart')->group(function() {
 	route::get('/{user_id}/pay','Cart\CartController@getPay')->name('cart.pay');
 	route::post('/{user_id}/pay','Cart\CartController@postPay')->name('cart.post.pay');
 
-
+	//checkout
+	route::post('/{user_id}/pay/checkout','Cart\CartController@postCheckout')->name('cart.post.checkout');
 	route::post('/test/{id}','Cart\CartController@test')->name('cart.test');
+
+	// Check Discount
+	
+	route::post('/discount/check','Cart\CartController@checkDiscount')->name('cart.discount.check');	
+	//check quatity
+	route::post('/check/quatity','Cart\CartController@checkQuatity')->name('cart.check.quatity');
+
+	route::get('/check/amount/{quatity}/{id_cart}','Cart\CartController@checkAmount')->name('cart.check.amount');
 
 });
 
@@ -88,7 +145,7 @@ route::get('/register','LoginController@getRegister')->name('register');
 route::post('/register','LoginController@postRegister')->name('postRegister');
 
 route::get('/login','LoginController@getLogin')->name('login');
-route::post('/login','LoginController@postLogin');
+route::post('/login','LoginController@postLogin')->name('postLogin');
 route::get('/logout','LoginController@logout')->name('logout');
 //end Login Logout
 

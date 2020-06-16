@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\BaseModel;
 use Illuminate\Http\Request;
 
-class discount extends Model
+class discount extends BaseModel
 {
     protected $table = 'discounts';
 

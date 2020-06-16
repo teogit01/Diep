@@ -24,7 +24,7 @@
 				<p><a href="{{route('home')}}"class="btn btn-primary py-3 px-4">Tiếp tục mua </a></p>
 
 
-				<div class="row mt-5 pt-3 d-flex">
+				<!-- <div class="row mt-5 pt-3 d-flex">
 					
 					<div class="col-md-6">
 						<div class="cart-detail bg-light p-3 p-md-4">
@@ -60,7 +60,7 @@
 							<p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div> <!-- .col-md-8 -->
 		</div>
 	</div>

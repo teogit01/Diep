@@ -163,5 +163,8 @@
 			 	}
         	})
         }
+        $(document).ready(function(){
+        	$('#type').attr('class','active')
+        })
 	</script>
 @endsection

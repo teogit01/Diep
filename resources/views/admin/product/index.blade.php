@@ -54,7 +54,11 @@
     	
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<div class="main">
-		<h3 style="color: blue">Quản lí sản phẩm</h3>
+		<div style="display: flex;">
+			<h3 style="color: black; width: 80%;padding-left: 20px;padding-top: 20px">Danh sách sản phẩm</h3>
+			<a href="{{route('admin.product.getadd')}}" style="width: 15%;"><button class="btn btn-info" style="width: 100%">Thêm</button></a>
+		</div>
+		
 		<hr style="opacity: 0.5;">
 		<div class="main-content">
 			<div class="left">
@@ -85,15 +89,16 @@
 									<td>{{$item->code}}</td>
 									<td>{{$item->name}}</td>									
 									<td  colspan="2">
+										@if (isset($item->color))
 										@foreach (json_decode($item->color) as $color)
 											{{$color}}
 										@endforeach
+										@endif
 									</td>
-									<td>{{$item->price}} đ</td>
+									<td>{{number_format($item->price,0,'.','.')}} đ</td>
 									<td>{{$item->amount}}</td>
 									<td><div class="action">
-										<a href="#" onclick='del({{$item->id}})'>Xoa</a>
-										<a href="#">sua</a>
+										<a href="#" onclick='del({{$item->id}})'><img src="{{asset('icon/delete.png')}}" style="width: 20px;"></a>
 										</div>
 									</td>
 								</tr>
@@ -109,7 +114,7 @@
         $(document).ready(function(){
             setTimeout(function(){ 
                 $('#showMessage').hide()
-            }, 1000);
+            }, 2000);
         });
 
         function del(id){
@@ -141,7 +146,7 @@
         		//window.location = 'http://127.0.0.1:8000/admin/product/add'
         	}
         $(document).ready(function(){
-        	
+        	$('#product').attr('class','active')
         })
 	</script>
 @endsection

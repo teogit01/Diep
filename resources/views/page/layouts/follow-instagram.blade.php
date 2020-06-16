@@ -2,8 +2,8 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 heading-section text-center mb-4 ftco-animate">
-            <h2 class="mb-4">Follow Us On Instagram</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+            <h2 style="padding-top: 20px;" class="mb-4">Liên kết với Instagram</h2>
+            <p></p>
           </div>
         </div>
       </div>

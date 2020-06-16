@@ -1,4 +1,4 @@
-
+	
 @extends('layouts/index')
 @section('content')
 <style type="text/css">
@@ -41,6 +41,13 @@
 	#showMessageDel { display: none; }
 </style>
 	<div class="main">
+		@if($message = Session::get('success'))
+		<div class="alert alert-success" style="text-align: center;position: fixed;width: 40%;background-color:#4C9F70;opacity: 0.7;color: black;right: 0;top:10%;height: 45px;" id='showMessage' role="alert">
+			<p>{{$message}}</p>
+			<p class="mb-0"></p>
+		</div>
+		@endif	
+	
 		<div class="title"><h3>Danh sách hoá đơn</h3></div>
 		<div class="left">
 				<table>
@@ -64,10 +71,10 @@
 									<th>{{ $bill->code }}</th>
 									<th>{{ $bill->name }}</th>
 									<th>{{ $bill->date }}</th>
-									<th>{{ $bill->status == 0 ? 'Chờ duyệt' : 'Đã duyệt'  }}</th>
+									<th>{{ $bill->status == 0 ? 'Chờ duyệt' : $bill->status == 1 ? 'Đã duyệt' : 'Đã huỷ' }}</th>
 									<th>{{ $bill->phone }}</th>
-									<th></th>
-									<th></th>
+									<th>{{ number_format($bill->total,0,'.','.') }}</th>
+									<th><img onclick='del({{$bill->id}})' src="{{asset('icon/delete.png')}}" style="width: 20px;"></th>
 								</tr>
 							@endforeach
 						@endif
@@ -76,9 +83,20 @@
 				<br>				
 		</div>
 		<script type="text/javascript">
+			$(document).ready(function(){
+				setTimeout(function(){ 
+					$('#showMessage').hide()
+				}, 1000);
+			});
 			function detail(id){
 				// alert(code);
 				window.location= path+'admin/bill/detail/'+id;
+			}
+				$(document).ready(function(){
+        		$('#bill').attr('class','active')
+        	})
+			function del(id){
+				window.location= path+'admin/bill/delete/'+id;	
 			}
 		</script>
 

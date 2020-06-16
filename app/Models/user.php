@@ -20,7 +20,9 @@ class user extends BaseModel
         'password',
 
         'name',
+        'avatar',
         'birthday',
+        'phone',
         'email',
         'address',
         'role_code',

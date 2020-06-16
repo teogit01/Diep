@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\type;
+use App\Models\producer;
+use App\Models\distributor;
 use DB;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller {
 	
@@ -30,11 +33,13 @@ class ProductController extends Controller {
     public function getAddProduct(){
     	
     	$types = type::all();
-    	return view('admin.product.getadd',['types'=>$types]);
+        $producers = producer::all();
+        $distributors = distributor::all();
+
+    	return view('admin.product.getadd',['types'=>$types,'producers'=>$producers,'distributors'=>$distributors]);
     }
 
     public function postAddProduct(Request $request) {
-        
         
         if ($request->hasFile('images')){
             $this->addImg($request->images);
@@ -42,9 +47,17 @@ class ProductController extends Controller {
         $insert = $request;
         $insert['image'] = json_encode($this->nameImgs);
         $insert['color'] = json_encode($request->colors);
-        $insert['size'] = json_encode($request->sizes);
-        $insert['gender'] = json_encode($request->gender);
-        $insert['code'] = strtoupper($request->code);
+        $insert['size'] = json_encode($request->size);
+        $insert['code'] = Str::random(5);
+        if (isset($request->nam)){
+            $insert['nam'] = 1;
+        } else 
+            $insert['nam'] = 0;
+
+        if (isset($request->nu)){
+            $insert['nu'] = 1;
+        } else 
+            $insert['nu'] = 0;
 
     	$config = [
     		'model' => new product(),
@@ -57,17 +70,25 @@ class ProductController extends Controller {
 
     // detail
     public function detail(Request $request) {
+
         $id = $request->id;
+
         $product = product::find($id);
         $types = type::all();
+        $producers = producer::all();
+        $distributors = distributor::all();
         
         $colorOrigins = collect(['Black','White','Blue','Green','Red','Pink']);
 
         $diff = $colorOrigins->diff(json_decode($product->color));
+
+        $sizeOrigins = collect(['36','37','38','39','40','41','42']);
+
+        $sizeDiff = $sizeOrigins->diff(json_decode($product->size));
         //return $diff->all();
         //$colorDiff = $diff;
 
-        return view('admin.product.detail',['data'=>$product,'colors'=>json_decode($product->color),'colorDiff'=>$diff->all(),'types'=>$types]);
+        return view('admin.product.detail',['data'=>$product,'colors'=>json_decode($product->color),'colorDiff'=>$diff->all(),'types'=>$types,'distributors'=>$distributors,'producers'=>$producers,'sizeDiff'=>$sizeDiff,'sizes'=>json_decode($product->size)]);
     }
 
     public function deleteProduct(Request $request) {

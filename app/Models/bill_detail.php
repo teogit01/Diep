@@ -16,7 +16,8 @@ class bill_detail extends BaseModel
     protected $fillable = [
         'id',
         'bill_id',
-        'product_name',
+        'product_code',
+        'product_amount',
 
         'created_at',
         'updated_at',
@@ -36,5 +37,8 @@ class bill_detail extends BaseModel
             'id' => 1
         ];
         return parent::base_update($this->request);
+    }
+     public function product(){
+        return $this->hasOne('App\Models\product','code','product_code');
     }
 }

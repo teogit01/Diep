@@ -19,15 +19,17 @@ class CreateProductsTable extends Migration
             $table->string('code')->nullable();
             $table->string('name')->nullable();
             $table->string('color')->nullable();
-            $table->integer('size')->nullable();
-            $table->double('price')->nullable();
-            $table->string('gender')->nullable();
+            $table->string('size')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('nam')->nullable();
+            $table->integer('nu')->nullable();
             $table->integer('amount')->nullable();
             $table->text('image')->nullable();
             $table->text('description')->nullable();
+            $table->integer('rate')->nullable();
 
             $table->string('producer_code')->nullable();
-            $table->string('distribution_code')->nullable();
+            $table->string('distributor_code')->nullable();
             $table->string('type_code')->nullable();
             
             $table->timestamp('created_at')

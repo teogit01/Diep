@@ -2,6 +2,7 @@
 @section('banner')
   <br><br><br>
 @endsection
+@section('main')
   <style type="text/css">
  
   .pagination { --display: none; }
@@ -29,8 +30,7 @@
     	</div>
     </section>
 
-
-@include('page/layouts/follow-instagram')
+@endsection
 
 @yield('js')
 

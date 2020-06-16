@@ -20,6 +20,8 @@ class cart extends BaseModel
         'user_code',
         
         'amount',
+        'size',
+        'color',
         
         'created_at',
         'updated_at',
