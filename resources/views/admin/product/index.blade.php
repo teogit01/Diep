@@ -95,7 +95,7 @@
 										@endforeach
 										@endif
 									</td>
-									<td>{{number_format($item->price,0,'.','.')}} đ</td>
+									<td>{{number_format($item->price,0,'.','.')}} VNĐ</td>
 									<td>{{$item->amount}}</td>
 									<td><div class="action">
 										<a href="#" onclick='del({{$item->id}})'><img src="{{asset('icon/delete.png')}}" style="width: 20px;"></a>

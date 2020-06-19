@@ -51,7 +51,7 @@
                 <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
               </p> -->
             </div>
-            <p class="price"><span>{{number_format($product->price,3,'.','.')}} VNĐ</span></p>
+            <p class="price"><span>{{number_format($product->price,0,'','.')}} VNĐ</span></p>
             <p>{{$product->description}}</p>
             
             <div class="row mt-4">

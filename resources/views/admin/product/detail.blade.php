@@ -102,7 +102,7 @@
 					<tr ondblclick='edit("price")'>
 						<th>Giá</th>
 						<td>
-							<input type="text" id="price" name='price'placeholder="{{number_format($data->price,3	,'.','.')}} đ" disabled autocomplete="off">
+							<input type="text" id="price" name='price'placeholder="{{number_format($data->price,0,'.','.')}} VNĐ" disabled autocomplete="off">
 						</td>
 					</tr>
 					<tr ondblclick='edit("amount")'>

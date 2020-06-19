@@ -75,16 +75,16 @@
 								<h3 class="billing-heading mb-4">Thành Tiền</h3>
 								<p class="d-flex">
 									<span>Tạm Tính</span>
-									<span>{{number_format($total+$precent,3,'.','.')}} vnd</span>
+									<span>{{number_format($total+$precent,0,'.','.')}} VNĐ</span>
 								</p>
 								<p class="d-flex">
 									<span>Khuyến Mãi</span>
-									<span>{{number_format($precent,3,'.','.')}}</span>
+									<span>{{number_format($precent,0,'.','.')}}</span>
 								</p>
 								<hr>
 								<p class="d-flex total-price">
 									<span>Tổng Cộng</span>
-									<span>{{number_format($total,3,'.','.')}} vnd</span>
+									<span>{{number_format($total,0,'.','.')}} VNĐ</span>
 								</p>
 							</div>
 							

@@ -46,7 +46,7 @@
             </div>
             <h3><a href="#">{{$product->name}}</a></h3>
             <div class="pricing">
-              <p class="price"><span>{{number_format($product->price,0,'','.')}} vnd</span></p>
+              <p class="price"><span>{{number_format($product->price,0,'','.')}} VNĐ</span></p>
             </div>
             <p class="bottom-area d-flex px-3">
               <a href="" class="add-to-cart text-center py-2 mr-1"  onclick='addToCart( "{{ $product->code }}")'><span>Thêm vào giỏ <i class="ion-ios-add ml-1"></i></span></a>

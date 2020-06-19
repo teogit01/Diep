@@ -66,7 +66,7 @@
 									</select>
 								</td>
 
-								<td class="total"> {{number_format($detail->product[0]->price,3,'.','.')}}
+								<td class="total"> {{number_format($detail->product[0]->price,0,'.','.')}}
 									<input type="text" style="display: none" value="{{$detail->product[0]->price}}" id='price-{{$index}}' name="">
 								</td>
 								<td class="total" style="width: 150px;">
@@ -75,7 +75,7 @@
 									</div>
 								</td>
 
-								<td class="total"><input type="text" class="tamtinh-{{$index}}" name="" value="{{number_format($detail_total[$index],3,'.','.')}}" style="width: 40%;padding-left: 10px;border: none;background-color: #fff" disabled>
+								<td class="total"><input type="text" class="tamtinh-{{$index}}" name="" value="{{number_format($detail_total[$index],0,'.','.')}}" style="width: 40%;padding-left: 10px;border: none;background-color: #fff" disabled>
 								</td>
 							</tr>
 						</form>
@@ -111,7 +111,7 @@
 					<p class="d-flex total-price">
 						<span>Tổng tiền</span>
 						<span>
-							<input type="text" id='tong' disabled style="border: none;background-color: #fff" name="" value="{{number_format($total,3,'.','.')}} vnd">
+							<input type="text" id='tong' disabled style="border: none;background-color: #fff" name="" value="{{number_format($total,0,'.','.')}} vnd">
 							<input type="text" id='total_submit' style="display: none" name="total" value="{{$total}}">
 						</span>
 					</p>
